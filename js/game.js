@@ -7,14 +7,14 @@ var Game = function(x, y) {
   this.enemies = [];
 };
 
-var rnd = function(num) {
-  return Math.floor(Math.random() * num);
-};
-
 Game.prototype.init = function(n) {
   for (var i = 0; i < n; i++) {
-    this.enemies.push(new Enemy(rnd(this.width), rnd(this.height)));
+    this.enemies.push(new Enemy(this.width, this.height));
   }
 };
 
-
+Game.prototype.update = function() {
+  for (var i = 0; i < this.enemies.length; i++) {
+    this.enemies[i].move();
+  }
+};
