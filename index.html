@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel='stylesheet' type='css' href='styles.css'> 
+    <link rel='stylesheet' type='css' href='css/styles.css'>
+    <link rel='stylesheet' type='css' href='css/bootstrap.min.css'>
   </head>
   <body>
-    <div class="scoreboard">
-      <!-- Modify the scoreboard when important events occur in your game! -->
-      <div class="high">High score: <span>0</span></div>
-      <div class="current">Current score: <span>0</span></div>
-      <div class="collisions">Collisions: <span>0</span></div>
+    <div class="container">
+
+      <div class="row">
+        <h1>Watch Out!</h1>
+      </div>
+
+
+      <div class="row scoreboard">
+        <!-- Modify the scoreboard when important events occur in your game! -->
+        <div class="high">High score: <span>0</span></div>
+        <div class="current">Current score: <span>0</span></div>
+        <div class="collisions">Collisions: <span>0</span></div>
+      </div>
+
+      <div class="row">
+        <svg class="game-area"></svg>
+      </div>
+
     </div>
-    <script src="d3.js" charset="utf-8"></script>
-    <script src='watchout.js'></script>
+    <script src="js/d3.js" charset="utf-8"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/game.js"></script>
+    <script src='js/watchout.js'></script>
   </body>
 </html>
