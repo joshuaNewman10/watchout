@@ -27,10 +27,10 @@ Game.prototype.update = function() {
   }
 };
 
-Game.prototype.checkCollisions = function() {
-  for (var i = 0; i < this.enemies.length; i++) {
-    if (pythagDist(this.player, this.enemies[i]) <= (this.player.radius + this.enemies[i].radius)) {
-      return true;
-    }
+Game.prototype.checkCollisions = function(enemyIndex) {
+  var d =  pythagDist(this.player, this.enemies[enemyIndex]);
+  if (d<= (this.player.radius + this.enemies[enemyIndex].radius)) {
+    console.log(d, enemyIndex);
+    return true;
   }
 };
