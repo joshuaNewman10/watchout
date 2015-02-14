@@ -51,7 +51,7 @@ var update = function() {
     // })
     .attrTween('cx', function(d, i) {
       var x = parseInt(d3.select(this).attr('cx'));
-      var interpolator = d3.interpolateRound(x, d.x);
+      var interpolator = d3.interpolateRound(x, d.destX);
 
       return function(t) {
         var xVal = interpolator(t);
@@ -62,7 +62,7 @@ var update = function() {
     })
     .attrTween('cy', function(d, i) {
       var y = parseInt(d3.select(this).attr('cy'));
-      var interpolator = d3.interpolateRound(y, d.y);
+      var interpolator = d3.interpolateRound(y, d.destY);
 
       return function(t) {
         var yVal = interpolator(t);

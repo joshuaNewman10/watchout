@@ -6,6 +6,8 @@ var Enemy = function(x, y, r) {
   this.yBound = y;
   this.x = rnd(x);
   this.y = rnd(y);
+  this.destX;
+  this.destY;
   this.radius = r;
 };
 
@@ -14,8 +16,8 @@ var rnd = function(num) {
 };
 
 Enemy.prototype.move = function() {
-  this.x = rnd(this.xBound);
-  this.y = rnd(this.yBound);
+  this.destX = rnd(this.xBound);
+  this.destY = rnd(this.yBound);
 };
 
 Enemy.prototype.getCoords = function() {
