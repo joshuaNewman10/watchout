@@ -15,6 +15,12 @@ var screenWidth = svg.style('width');
 var screenHeight = svg.style('height');
 var difficulty = 1500;
 
+var drag = d3.behavior.drag()
+  .on('drag', function() {
+    d3.select(this).attr('x', d3.event.x - 20);
+    d3.select(this).attr('y', d3.event.y - 20);
+  });
+
 var initialize = function() {
   svg.selectAll('circle')
     .data(newGame.enemies)
@@ -24,6 +30,17 @@ var initialize = function() {
     .attr('cx', function(d) { return d.x; })
     .attr('cy', function(d) { return d.y; })
     .attr('r', '20px');
+
+  svg.selectAll('rect')
+    .data([newGame.player])
+    .enter()
+    .append('rect')
+    .attr('class', 'player')
+    .attr('x', function(d) { return d.x; })
+    .attr('y', function(d) { return d.y; })
+    .attr('width', 40)
+    .attr('height', 40)
+    .call(drag);
 };
 
 var update = function() {
@@ -35,7 +52,6 @@ var update = function() {
     .duration(difficulty)
     .attr('cx', function(d) { return d.x; })
     .attr('cy', function(d) { return d.y; });
-    // update the enemies
 };
 
 var gameLoop = (function() {
