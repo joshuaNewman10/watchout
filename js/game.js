@@ -30,7 +30,7 @@ Game.prototype.update = function() {
 Game.prototype.checkCollisions = function() {
   for (var i = 0; i < this.enemies.length; i++) {
     if (pythagDist(this.player, this.enemies[i]) <= (this.player.radius + this.enemies[i].radius)) {
-      // window.gameLoop();
+      return true;
     }
   }
 };
