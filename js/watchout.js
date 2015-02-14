@@ -17,30 +17,24 @@ var difficulty = 1500;
 
 var drag = d3.behavior.drag()
   .on('drag', function() {
-    d3.select(this).attr('x', d3.event.x - 20);
-    d3.select(this).attr('y', d3.event.y - 20);
+    newGame.player.x = d3.event.x;
+    newGame.player.y = d3.event.y;
+    d3.select(this).attr('cx', d3.event.x);
+    d3.select(this).attr('cy', d3.event.y);
+    newGame.checkCollisions();
   });
 
 var initialize = function() {
   svg.selectAll('circle')
-    .data(newGame.enemies)
+    .data(newGame.enemies.concat(newGame.player))
     .enter()
     .append('circle')
-    .attr('class', 'enemy')
+    .attr('class', function(d) { return d.type; })
     .attr('cx', function(d) { return d.x; })
     .attr('cy', function(d) { return d.y; })
-    .attr('r', '20px');
+    .attr('r', function(d) { return d.radius; });
 
-  svg.selectAll('rect')
-    .data([newGame.player])
-    .enter()
-    .append('rect')
-    .attr('class', 'player')
-    .attr('x', function(d) { return d.x; })
-    .attr('y', function(d) { return d.y; })
-    .attr('width', 40)
-    .attr('height', 40)
-    .call(drag);
+  svg.select('.player').call(drag);
 };
 
 var update = function() {

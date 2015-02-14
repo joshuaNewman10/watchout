@@ -1,10 +1,12 @@
 // Enemy class
 
-var Enemy = function(x, y) {
+var Enemy = function(x, y, r) {
+  this.type = 'enemy';
   this.xBound = x;
   this.yBound = y;
   this.x = rnd(x);
   this.y = rnd(y);
+  this.radius = r;
 };
 
 var rnd = function(num) {
