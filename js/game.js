@@ -6,6 +6,7 @@ var Game = function(x, y) {
   this.height = parseInt(y.split('px')[0]);
   this.player = new Player(this.width/2, this.height/2, 20);
   this.enemies = [];
+  this.score;
 };
 
 var pythagDist = function(a, b) {
@@ -13,6 +14,8 @@ var pythagDist = function(a, b) {
 };
 
 Game.prototype.init = function(n) {
+  this.score = 0;
+
   for (var i = 0; i < n; i++) {
     this.enemies.push(new Enemy(this.width, this.height, 20));
   }
@@ -27,7 +30,7 @@ Game.prototype.update = function() {
 Game.prototype.checkCollisions = function() {
   for (var i = 0; i < this.enemies.length; i++) {
     if (pythagDist(this.player, this.enemies[i]) <= (this.player.radius + this.enemies[i].radius)) {
-      console.log('FIREEEE');
+      // window.gameLoop();
     }
   }
 };

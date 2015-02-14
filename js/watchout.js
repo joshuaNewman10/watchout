@@ -39,6 +39,11 @@ var initialize = function() {
 
 var update = function() {
   newGame.update();
+  newGame.score++;
+
+  d3.select('.current')
+    .select('span')
+    .text(newGame.score);
 
   svg.selectAll('circle')
     .data(newGame.enemies)
@@ -53,7 +58,6 @@ var gameLoop = (function() {
   newGame = new Game(screenWidth, screenHeight);
   newGame.init(5);
   initialize();
-
   setInterval(update, 2000);
 
 })();
